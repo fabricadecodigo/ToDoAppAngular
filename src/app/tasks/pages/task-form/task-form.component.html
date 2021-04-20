@@ -1,0 +1,17 @@
+<h2 class="page-title">{{ pageTitle }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+  <div class="form-item">
+    <label>Titulo</label>
+    <input type="text" name="title" [formControl]="title" />
+    <div class="validation-errors" *ngIf="title.invalid && (title.dirty || title.touched)">
+      <p *ngIf="title.hasError('required')">Campo obrigatório</p>
+      <p *ngIf="title.hasError('minlength')">
+        Informe no mínimo {{ title.getError('minlength').requiredLength }} caracteres
+      </p>
+    </div>
+  </div>
+
+  <button type="submit" class="btn-primary" [disabled]="form.invalid">Salvar</button>
+</form>

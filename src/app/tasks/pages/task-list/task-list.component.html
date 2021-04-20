@@ -1,0 +1,23 @@
+<h2 class="page-title">Tarefas</h2>
+
+<a routerLink="new" class="btn-new">Nova tarefa</a>
+
+<table style="margin-top: 10px">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.id }}</td>
+      <td>{{ task.title }}</td>
+      <td class="actions">
+        <button type="button" class="btn-outline-secondary" [routerLink]="['edit', task.id]">Editar</button>
+        <button type="button" class="btn-outline-secondary" (click)="deleteTask(task)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
